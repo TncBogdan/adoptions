@@ -1,4 +1,4 @@
-package com.p5.adoptions.model.repository;
+package com.p5.adoptions.repository;
 
 import com.p5.adoptions.model.Animal;
 import com.p5.adoptions.model.Cat;
