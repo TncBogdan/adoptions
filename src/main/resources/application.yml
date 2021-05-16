@@ -1,2 +1,11 @@
 server:
-  port: 8090
+  port : 8090
+spring:
+  datasource:
+    username: postgres
+    password: root
+    url: "jdbc:postgresql://localhost:5432/pentastagiu2021java"
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
