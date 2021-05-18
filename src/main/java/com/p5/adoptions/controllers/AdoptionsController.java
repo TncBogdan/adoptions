@@ -25,7 +25,7 @@ public class AdoptionsController {
 
     @PostMapping
     public ResponseEntity<Animal> addAnimalForAdoptions(@RequestBody Animal animal) {
-        if (animal == null && animal.getName() == null && animal.getPhotoUrl() == null) {
+        if (animal == null && animal.getName() == null && animal.getPhoto() == null) {
             return ResponseEntity.badRequest().body(animal);
         }
         AnimalStore.available.add(animal);

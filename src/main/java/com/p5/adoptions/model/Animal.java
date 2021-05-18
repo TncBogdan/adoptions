@@ -6,14 +6,14 @@ import org.springframework.stereotype.Repository;
 public class Animal {
 
     private String name;
-    private String photoUrl;
+    private String photo;
 
     public Animal() {
     }
 
-    public Animal(String name, String photoUrl) {
+    public Animal(String name, String photo) {
         this.name = name;
-        this.photoUrl = photoUrl;
+        this.photo = photo;
     }
 
     public void speak(){
@@ -33,12 +33,12 @@ public class Animal {
         return this;
     }
 
-    public String getPhotoUrl() {
-        return photoUrl;
+    public String getPhoto() {
+        return photo;
     }
 
-    public Animal setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
+    public Animal setPhoto(String photo) {
+        this.photo = photo;
         return this;
     }
 
