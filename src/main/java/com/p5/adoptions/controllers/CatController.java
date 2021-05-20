@@ -1,7 +1,8 @@
 package com.p5.adoptions.controllers;
 
-import com.p5.adoptions.repository.Cat;
+import com.p5.adoptions.services.model.CatDTO;
 import com.p5.adoptions.services.CatService;
+import com.p5.adoptions.services.model.adapters.ListDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +19,12 @@ public class CatController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Cat>> getAllCats(){
-        List<Cat> catsList = catService.findAll();
-        return ResponseEntity.ok(catsList);
+    public ResponseEntity<ListDTO<CatDTO>> getAllCats() {
+        return ResponseEntity.ok(catService.findAll());
     }
 
     @PostMapping
-    public void addCat(@RequestBody Cat cat){
-        catService.addCat(cat);
+    public void addCat(@RequestBody CatDTO catDTO) {
+        catService.addCat(catDTO);
     }
 }

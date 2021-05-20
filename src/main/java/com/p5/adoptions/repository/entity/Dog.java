@@ -1,4 +1,4 @@
-package com.p5.adoptions.repository;
+package com.p5.adoptions.repository.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     private String name;
     private String photo;
