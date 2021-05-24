@@ -19,7 +19,7 @@ public class CatService {
 
     public void addCat(CatDTO catDTO) {
         if (catDTO.getName() == null && catDTO.getPhoto() == null) {
-            throw new RuntimeException("Cat must have a name and a photo.");
+            throw new RuntimeException("Must have a name and a photo.");
         }
         catRepository.save(CatAdapter.toCat(catDTO));
     }
@@ -27,12 +27,12 @@ public class CatService {
     public ListDTO<CatDTO> findAll() {
         List<CatDTO> catDTOList = CatAdapter.toListDTO(catRepository.findAll());
         long totalCount = catRepository.count();
-        return new ListDTO<CatDTO>(Math.toIntExact(totalCount), catDTOList);
+        return new ListDTO<>(Math.toIntExact(totalCount), catDTOList);
     }
 
     public CatDTO findCat(String name) {
         if (name == null && name.equals("")) {
-            throw new RuntimeException("Must have name.");
+            throw new RuntimeException("Must have a name.");
         }
         return CatAdapter.toDTO(catRepository.findCatByName(name));
     }
