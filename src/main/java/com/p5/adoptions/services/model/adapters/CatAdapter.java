@@ -9,7 +9,7 @@ import java.util.List;
 public class CatAdapter {
 
     public static Cat toCat(CatDTO catDTO){
-        return new Cat().setName(catDTO.getName()).setPhoto(catDTO.getPhoto());
+        return (Cat) new Cat().setName(catDTO.getName()).setPhoto(catDTO.getPhoto());
 
     }
 

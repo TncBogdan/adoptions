@@ -2,17 +2,16 @@ package com.p5.adoptions.services.model;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class Animal {
+public class AnimalDTO {
 
     private Integer id;
     private String name;
     private String photo;
 
-    public Animal() {
+    public AnimalDTO() {
     }
 
-    public Animal(Integer id, String name, String photo) {
+    public AnimalDTO(Integer id, String name, String photo) {
         this.id = id;
         this.name = name;
         this.photo = photo;
@@ -30,7 +29,7 @@ public class Animal {
         return id;
     }
 
-    public Animal setId(Integer id) {
+    public AnimalDTO setId(Integer id) {
         this.id = id;
         return this;
     }
@@ -39,7 +38,7 @@ public class Animal {
         return name;
     }
 
-    public Animal setName(String name) {
+    public AnimalDTO setName(String name) {
         this.name = name;
         return this;
     }
@@ -48,7 +47,7 @@ public class Animal {
         return photo;
     }
 
-    public Animal setPhoto(String photo) {
+    public AnimalDTO setPhoto(String photo) {
         this.photo = photo;
         return this;
     }

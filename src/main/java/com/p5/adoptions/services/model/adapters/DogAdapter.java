@@ -8,12 +8,12 @@ import java.util.List;
 
 public class DogAdapter {
 
-    public static DogDTO toDTO(Dog dog){
-        return new DogDTO(dog.getId(), dog.getName(), dog.getPhoto());
+    public static Dog toDog(DogDTO dogDTO){
+        return (Dog) new Dog().setId(dogDTO.getId()).setName(dogDTO.getName()).setPhoto(dogDTO.getPhoto());
     }
 
-    public static Dog toDog(DogDTO dogDTO){
-        return new Dog().setId(dogDTO.getId()).setName(dogDTO.getName()).setPhoto(dogDTO.getPhoto());
+    public static DogDTO toDTO(Dog dog){
+        return new DogDTO(dog.getId(), dog.getName(), dog.getPhoto());
     }
 
     public static List<DogDTO> toListDTO(List<Dog>dogList){
