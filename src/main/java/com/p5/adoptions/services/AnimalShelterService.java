@@ -17,15 +17,19 @@ public class AnimalShelterService {
     }
 
     public AnimalShelterDTO getShelter(Integer id) {
-        return AnimalShelterAdapter.toAnimalShelterDTO(animalShelterRepository.getOne(id));
+        return AnimalShelterAdapter.toDTO(animalShelterRepository.getOne(id));
     }
 
     public AnimalShelterDTO createShelter(AnimalShelterDTO animalShelterDTO) {
-        AnimalShelter animalShelter = AnimalShelterAdapter.toAnimalShelter(animalShelterDTO);
+        AnimalShelter animalShelter = AnimalShelterAdapter.fromDTO(animalShelterDTO);
         animalShelter.setId(null);
         for (Animal animal : animalShelter.getAnimals()) {
             animal.setId(null);
         }
-        return AnimalShelterAdapter.toAnimalShelterDTO(animalShelterRepository.save(animalShelter));
+        return AnimalShelterAdapter.toDTO(animalShelterRepository.save(animalShelter));
+    }
+
+    public AnimalShelterDTO updateShelter(AnimalShelterDTO animalShelterDTO) {
+        return AnimalShelterAdapter.toDTO(animalShelterRepository.save(AnimalShelterAdapter.fromDTO(animalShelterDTO)));
     }
 }

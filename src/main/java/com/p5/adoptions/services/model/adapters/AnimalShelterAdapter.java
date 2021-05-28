@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AnimalShelterAdapter {
 
-    public static AnimalShelter toAnimalShelter(AnimalShelterDTO animalShelterDTO) {
+    public static AnimalShelter fromDTO(AnimalShelterDTO animalShelterDTO) {
         return new AnimalShelter()
                 .setName(animalShelterDTO.getName())
                 .setAddress(animalShelterDTO.getAddress())
@@ -16,7 +16,7 @@ public class AnimalShelterAdapter {
                 .setAnimals(AnimalAdapter.toAnimalList(animalShelterDTO.getAnimals()));
     }
 
-    public static AnimalShelterDTO toAnimalShelterDTO(AnimalShelter animalShelter) {
+    public static AnimalShelterDTO toDTO(AnimalShelter animalShelter) {
         return new AnimalShelterDTO()
                 .setId(animalShelter.getId())
                 .setName(animalShelter.getName())
@@ -24,9 +24,9 @@ public class AnimalShelterAdapter {
                 .setAnimals(AnimalAdapter.toListDTO(animalShelter.getAnimals()));
     }
 
-    public static List<AnimalShelterDTO> toAnimalShelterDTOList(List<AnimalShelter> animalShelters) {
+    public static List<AnimalShelterDTO> toDTOList(List<AnimalShelter> animalShelters) {
         List<AnimalShelterDTO> list = new ArrayList<>();
-        animalShelters.forEach(animalShelter -> list.add(toAnimalShelterDTO(animalShelter)));
+        animalShelters.forEach(animalShelter -> list.add(toDTO(animalShelter)));
         return list;
     }
 

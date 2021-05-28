@@ -1,14 +1,19 @@
 package com.p5.adoptions.services.model;
 
-import com.p5.adoptions.repository.entity.Animal;
-
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalShelterDTO {
+
     private Integer id;
+
+    @NotNull(message = "Name is mandatory.")
     private String name;
+
+    @NotNull
     private String address;
+
     private List<AnimalDTO> animals = new ArrayList<>();
 
     public AnimalShelterDTO() {
