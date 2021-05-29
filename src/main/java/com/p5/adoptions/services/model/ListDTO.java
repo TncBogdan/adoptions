@@ -1,4 +1,4 @@
-package com.p5.adoptions.services.model.adapters;
+package com.p5.adoptions.services.model;
 
 import java.util.List;
 

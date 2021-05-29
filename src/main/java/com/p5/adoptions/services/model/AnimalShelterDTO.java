@@ -1,11 +1,17 @@
 package com.p5.adoptions.services.model;
 
+import com.p5.adoptions.services.model.validations.OnCreate;
+import com.p5.adoptions.services.model.validations.OnUpdate;
+
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalShelterDTO {
 
+    @Null(message = "Id must be null for creation.", groups = OnCreate.class)
+    @NotNull(message = "Id must not be null.", groups = OnUpdate.class)
     private Integer id;
 
     @NotNull(message = "Name is mandatory.")

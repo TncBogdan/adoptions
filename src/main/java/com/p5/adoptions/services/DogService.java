@@ -3,7 +3,7 @@ package com.p5.adoptions.services;
 import com.p5.adoptions.repository.DogRepository;
 import com.p5.adoptions.services.model.DogDTO;
 import com.p5.adoptions.services.model.adapters.DogAdapter;
-import com.p5.adoptions.services.model.adapters.ListDTO;
+import com.p5.adoptions.services.model.ListDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

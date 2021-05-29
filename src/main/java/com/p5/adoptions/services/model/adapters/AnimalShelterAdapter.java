@@ -24,7 +24,7 @@ public class AnimalShelterAdapter {
                 .setAnimals(AnimalAdapter.toListDTO(animalShelter.getAnimals()));
     }
 
-    public static List<AnimalShelterDTO> toDTOList(List<AnimalShelter> animalShelters) {
+    public static List<AnimalShelterDTO> toListDTO(List<AnimalShelter> animalShelters) {
         List<AnimalShelterDTO> list = new ArrayList<>();
         animalShelters.forEach(animalShelter -> list.add(toDTO(animalShelter)));
         return list;
