@@ -34,7 +34,7 @@ public class AnimalShelterController {
     }
 
     @PutMapping
-    private ResponseEntity<AnimalShelterDTO>updateShelter(@RequestBody AnimalShelterDTO animalShelterDTO){
+    private ResponseEntity<AnimalShelterDTO>updateShelter(@Valid @RequestBody AnimalShelterDTO animalShelterDTO){
         return ResponseEntity.ok(animalShelterService.updateShelter(animalShelterDTO));
     }
 }
