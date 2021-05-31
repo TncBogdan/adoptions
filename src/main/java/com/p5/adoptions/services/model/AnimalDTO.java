@@ -1,11 +1,25 @@
 package com.p5.adoptions.services.model;
 
+import com.p5.adoptions.services.model.validations.OnCreate;
+import com.p5.adoptions.services.model.validations.OnUpdate;
 import org.springframework.stereotype.Repository;
+
+import javax.validation.constraints.*;
 
 public class AnimalDTO {
 
+    @Null(message = "Id must be null for creation.", groups = OnCreate.class)
+    @NotNull(message = "Id must not be null.", groups = OnUpdate.class)
+    @Positive
     private Integer id;
+
+    @NotNull
+    @NotBlank
+    @Size(min = 3, max = 50)
     private String name;
+
+    @NotNull
+    @NotBlank
     private String photo;
 
     public AnimalDTO() {

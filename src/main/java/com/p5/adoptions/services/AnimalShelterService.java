@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Locale;
 
 @Service
-@Validated
+//@Validated
 public class AnimalShelterService {
 
     private final AnimalShelterRepository animalShelterRepository;
@@ -33,7 +33,9 @@ public class AnimalShelterService {
     }
 
     @Validated(OnCreate.class)
-    public AnimalShelterDTO createShelter(@Valid AnimalShelterDTO animalShelterDTO) {
+    public AnimalShelterDTO createShelter(AnimalShelterDTO animalShelterDTO) {
+
+        validateShelter(animalShelterDTO);
 
         AnimalShelter animalShelter = AnimalShelterAdapter.fromDTO(animalShelterDTO);
 
@@ -41,7 +43,7 @@ public class AnimalShelterService {
     }
 
     @Validated(OnUpdate.class)
-    public AnimalShelterDTO updateShelter(@Valid AnimalShelterDTO animalShelterDTO) {
+    public AnimalShelterDTO updateShelter(AnimalShelterDTO animalShelterDTO) {
 
         validateShelter(animalShelterDTO);
 
@@ -50,15 +52,21 @@ public class AnimalShelterService {
 
     private void validateShelter(AnimalShelterDTO animalShelterDTO) {
 
-        if (!animalShelterDTO.getAddress().toLowerCase(Locale.ROOT).contains("iasi")){
-            throw new RuntimeException("This shelter is not from Iasi");
+        if (!animalShelterDTO.getAddress().toLowerCase(Locale.ROOT).contains("iasi") && (!animalShelterDTO.getAddress().toLowerCase(Locale.ROOT).contains("brasov"))) {
+            throw new RuntimeException("This shelter is not from Iasi or Brasov");
         }
 
-        for (AnimalDTO animalDTO : animalShelterDTO.getAnimals()){
-            if (!animalDTO.getPhoto().toLowerCase(Locale.ROOT).contains("https")){
+        for (AnimalDTO animalDTO : animalShelterDTO.getAnimals()) {
+            if (!animalDTO.getPhoto().toLowerCase(Locale.ROOT).contains("https")) {
                 throw new RuntimeException("Animal does not have valid url");
             }
         }
+            ////for animal
+//        for (AnimalDTO animalDTO : animalShelterDTO.getAnimals()){
+//            if (!animalDTO.getName().isEmpty()){
+//                throw new RuntimeException("This shelter is empty");
+//            }
+//        }
 
         animalShelterRepository
                 .findById(animalShelterDTO.getId())

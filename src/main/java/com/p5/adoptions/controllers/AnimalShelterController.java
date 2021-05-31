@@ -29,7 +29,7 @@ public class AnimalShelterController {
     }
 
     @PostMapping
-    private ResponseEntity<AnimalShelterDTO>createShelter(@RequestBody AnimalShelterDTO animalShelterDTO){
+    private ResponseEntity<AnimalShelterDTO>createShelter(@Valid @RequestBody AnimalShelterDTO animalShelterDTO){
         return ResponseEntity.ok(animalShelterService.createShelter(animalShelterDTO));
     }
 

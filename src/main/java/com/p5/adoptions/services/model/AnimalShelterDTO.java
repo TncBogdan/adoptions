@@ -15,11 +15,13 @@ public class AnimalShelterDTO {
     private Integer id;
 
     @NotNull(message = "Name is mandatory.")
-    @NotBlank(message = "Name must have at list 3 chars.")
-    @Size(min = 3, max = 100, message = "3 to 100")
+    @NotBlank
+    @Size(min = 3, max = 100, message = "Must be between 3 and 100")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Address is mandatory.")
+    @NotBlank
+    @Size(min = 3, max = 100, message = "Must have between 3 and 100 chars")
     private String address;
 
     private List<AnimalDTO> animals = new ArrayList<>();
