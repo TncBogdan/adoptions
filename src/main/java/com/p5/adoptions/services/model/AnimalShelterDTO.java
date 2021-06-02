@@ -16,7 +16,7 @@ public class AnimalShelterDTO {
 
     @NotNull(message = "Name is mandatory.")
     @NotBlank
-    @Size(min = 3, max = 100, message = "Must be between 3 and 100")
+    @Size(min = 3, max = 100, message = "Must have between 3 and 100")
     private String name;
 
     @NotNull(message = "Address is mandatory.")

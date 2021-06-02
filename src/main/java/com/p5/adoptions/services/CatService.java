@@ -21,7 +21,7 @@ public class CatService {
         if (catDTO.getName() == null && catDTO.getPhoto() == null) {
             throw new RuntimeException("Must have a name and a photo.");
         }
-        catRepository.save(CatAdapter.toCat(catDTO));
+        catRepository.save(CatAdapter.fromDTO(catDTO));
     }
 
     public ListDTO<CatDTO> findAll() {

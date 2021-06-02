@@ -13,7 +13,7 @@ public class AnimalShelterAdapter {
                 .setName(animalShelterDTO.getName())
                 .setAddress(animalShelterDTO.getAddress())
                 .setId(animalShelterDTO.getId())
-                .setAnimals(AnimalAdapter.toAnimalList(animalShelterDTO.getAnimals()));
+                .setAnimals(AnimalAdapter.fromListDTO(animalShelterDTO.getAnimals()));
     }
 
     public static AnimalShelterDTO toDTO(AnimalShelter animalShelter) {

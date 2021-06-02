@@ -15,7 +15,7 @@ public class AnimalDTO {
 
     @NotNull
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(min = 3, max = 50, message = "Name must have between 3 and 50 chars")
     private String name;
 
     @NotNull

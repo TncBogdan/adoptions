@@ -21,7 +21,7 @@ public class DogService {
         if (dogDTO.getName() == null && dogDTO.getPhoto() == null) {
             throw new RuntimeException("Must have name and url.");
         }
-        dogRepository.save(DogAdapter.toDog(dogDTO));
+        dogRepository.save(DogAdapter.fromDTO(dogDTO));
     }
 
     public ListDTO<DogDTO> findAll() {

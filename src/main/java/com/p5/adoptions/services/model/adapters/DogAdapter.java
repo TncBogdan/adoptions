@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DogAdapter {
 
-    public static Dog toDog(DogDTO dogDTO){
+    public static Dog fromDTO(DogDTO dogDTO){
         return (Dog) new Dog().setId(dogDTO.getId()).setName(dogDTO.getName()).setPhoto(dogDTO.getPhoto());
     }
 
