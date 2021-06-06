@@ -1,7 +1,7 @@
-package com.p5.adoptions.services.model.adapters;
+package com.p5.adoptions.model.adapters;
 
 import com.p5.adoptions.repository.entity.Dog;
-import com.p5.adoptions.services.model.DogDTO;
+import com.p5.adoptions.model.DogDTO;
 
 import java.util.ArrayList;
 import java.util.List;

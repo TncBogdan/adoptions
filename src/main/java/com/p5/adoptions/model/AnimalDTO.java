@@ -1,8 +1,7 @@
-package com.p5.adoptions.services.model;
+package com.p5.adoptions.model;
 
-import com.p5.adoptions.services.model.validations.OnCreate;
-import com.p5.adoptions.services.model.validations.OnUpdate;
-import org.springframework.stereotype.Repository;
+import com.p5.adoptions.model.validations.OnCreate;
+import com.p5.adoptions.model.validations.OnUpdate;
 
 import javax.validation.constraints.*;
 

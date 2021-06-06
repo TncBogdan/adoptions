@@ -1,6 +1,6 @@
 package com.p5.adoptions.controllers;
 
-import com.p5.adoptions.services.model.AnimalDTO;
+import com.p5.adoptions.model.AnimalDTO;
 import com.p5.adoptions.repository.AnimalStore;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

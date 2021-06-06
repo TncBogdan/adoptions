@@ -1,7 +1,7 @@
-package com.p5.adoptions.services.model;
+package com.p5.adoptions.model;
 
-import com.p5.adoptions.services.model.validations.OnCreate;
-import com.p5.adoptions.services.model.validations.OnUpdate;
+import com.p5.adoptions.model.validations.OnCreate;
+import com.p5.adoptions.model.validations.OnUpdate;
 
 import javax.validation.constraints.*;
 import java.util.ArrayList;

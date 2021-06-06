@@ -1,7 +1,7 @@
 package com.p5.adoptions.controllers;
 
 import com.p5.adoptions.services.AnimalShelterService;
-import com.p5.adoptions.services.model.AnimalShelterDTO;
+import com.p5.adoptions.model.AnimalShelterDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

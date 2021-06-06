@@ -1,7 +1,7 @@
-package com.p5.adoptions.services.model.adapters;
+package com.p5.adoptions.model.adapters;
 
 import com.p5.adoptions.repository.entity.Cat;
-import com.p5.adoptions.services.model.CatDTO;
+import com.p5.adoptions.model.CatDTO;
 
 import java.util.ArrayList;
 import java.util.List;

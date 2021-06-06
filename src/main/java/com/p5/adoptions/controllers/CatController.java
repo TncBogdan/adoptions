@@ -1,8 +1,8 @@
 package com.p5.adoptions.controllers;
 
-import com.p5.adoptions.services.model.CatDTO;
+import com.p5.adoptions.model.CatDTO;
 import com.p5.adoptions.services.CatService;
-import com.p5.adoptions.services.model.ListDTO;
+import com.p5.adoptions.model.ListDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

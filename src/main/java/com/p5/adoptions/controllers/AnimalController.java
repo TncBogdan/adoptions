@@ -1,8 +1,7 @@
 package com.p5.adoptions.controllers;
 
-import com.p5.adoptions.repository.entity.AnimalShelter;
 import com.p5.adoptions.services.AnimalService;
-import com.p5.adoptions.services.model.AnimalDTO;
+import com.p5.adoptions.model.AnimalDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,9 +27,9 @@ public class AnimalController {
         return ResponseEntity.ok(animalService.getAll());
     }
 
-    @PostMapping
-    public ResponseEntity<AnimalDTO>addAnimal(@RequestBody AnimalDTO animalDTO, AnimalShelter animalShelter){
-
-        return ResponseEntity.ok(animalService.addAnimal(animalDTO));
-    }
+//    @PostMapping
+//    public ResponseEntity<AnimalDTO>addAnimal(@RequestBody AnimalDTO animalDTO, AnimalShelter animalShelter){
+//
+//        return ResponseEntity.ok(animalService.addAnimal(animalDTO));
+//    }
 }

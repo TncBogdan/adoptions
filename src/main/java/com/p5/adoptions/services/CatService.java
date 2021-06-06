@@ -1,9 +1,9 @@
 package com.p5.adoptions.services;
 
 import com.p5.adoptions.repository.CatRepository;
-import com.p5.adoptions.services.model.CatDTO;
-import com.p5.adoptions.services.model.adapters.CatAdapter;
-import com.p5.adoptions.services.model.ListDTO;
+import com.p5.adoptions.model.CatDTO;
+import com.p5.adoptions.model.adapters.CatAdapter;
+import com.p5.adoptions.model.ListDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.p5.adoptions.services.model;
+package com.p5.adoptions.model;
 
 public class DogDTO extends AnimalDTO {
     public DogDTO(Integer id, String name, String photoUrl) {

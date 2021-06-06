@@ -1,8 +1,8 @@
 package com.p5.adoptions.repository;
 
-import com.p5.adoptions.services.model.AnimalDTO;
-import com.p5.adoptions.services.model.CatDTO;
-import com.p5.adoptions.services.model.DogDTO;
+import com.p5.adoptions.model.AnimalDTO;
+import com.p5.adoptions.model.CatDTO;
+import com.p5.adoptions.model.DogDTO;
 
 import java.util.ArrayList;
 import java.util.List;
