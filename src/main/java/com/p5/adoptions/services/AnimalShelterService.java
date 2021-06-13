@@ -2,10 +2,13 @@ package com.p5.adoptions.services;
 
 import com.p5.adoptions.model.AnimalDTO;
 import com.p5.adoptions.model.AnimalShelterDTO;
+import com.p5.adoptions.model.adapters.AnimalAdapter;
 import com.p5.adoptions.model.adapters.AnimalShelterAdapter;
 import com.p5.adoptions.model.validations.OnCreate;
 import com.p5.adoptions.model.validations.OnUpdate;
+import com.p5.adoptions.repository.AnimalRepository;
 import com.p5.adoptions.repository.AnimalShelterRepository;
+import com.p5.adoptions.repository.entity.Animal;
 import com.p5.adoptions.repository.entity.AnimalShelter;
 import com.p5.adoptions.services.exceptions.AnimalShelterNotFoundException;
 import com.p5.adoptions.services.exceptions.ShelterAddressException;
@@ -13,18 +16,20 @@ import com.p5.adoptions.services.exceptions.Violation;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Logger;
 
 @Service
 //@Validated
 public class AnimalShelterService {
 
     private final AnimalShelterRepository animalShelterRepository;
+    private final AnimalRepository animalRepository;
 
-    public AnimalShelterService(AnimalShelterRepository animalShelterRepository) {
+    public AnimalShelterService(AnimalShelterRepository animalShelterRepository, AnimalRepository animalRepository) {
         this.animalShelterRepository = animalShelterRepository;
+        this.animalRepository = animalRepository;
     }
 
     public List<AnimalShelterDTO> getAll() {
@@ -48,7 +53,7 @@ public class AnimalShelterService {
     @Validated(OnUpdate.class)
     public AnimalShelterDTO updateShelter(AnimalShelterDTO animalShelterDTO) {
 
-            validateShelter(animalShelterDTO);
+        validateShelter(animalShelterDTO);
 
 //        try {
 //            validateShelter(animalShelterDTO);
@@ -59,6 +64,12 @@ public class AnimalShelterService {
 
         return AnimalShelterAdapter.toDTO(animalShelterRepository.save(AnimalShelterAdapter.fromDTO(animalShelterDTO)));
     }
+
+//    public AnimalDTO addAnimalToSpecificShelter(AnimalShelterDTO animalShelterDTO, AnimalDTO animalDTO) {
+//
+//
+//
+//    }
 
     private void validateShelter(AnimalShelterDTO animalShelterDTO) {
 
@@ -71,12 +82,6 @@ public class AnimalShelterService {
                 throw new RuntimeException("Animal does not have valid url");
             }
         }
-        ////for animal
-//        for (AnimalDTO animalDTO : animalShelterDTO.getAnimals()){
-//            if (!animalDTO.getName().isEmpty()){
-//                throw new RuntimeException("This shelter is empty");
-//            }
-//        }
 
         animalShelterRepository
                 .findById(animalShelterDTO.getId())

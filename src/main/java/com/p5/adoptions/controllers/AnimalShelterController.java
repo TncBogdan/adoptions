@@ -1,5 +1,7 @@
 package com.p5.adoptions.controllers;
 
+import com.p5.adoptions.model.AnimalDTO;
+import com.p5.adoptions.repository.entity.Animal;
 import com.p5.adoptions.services.AnimalShelterService;
 import com.p5.adoptions.model.AnimalShelterDTO;
 import org.springframework.http.ResponseEntity;
@@ -37,4 +39,9 @@ public class AnimalShelterController {
     private ResponseEntity<AnimalShelterDTO>updateShelter(@Valid @RequestBody AnimalShelterDTO animalShelterDTO){
         return ResponseEntity.ok(animalShelterService.updateShelter(animalShelterDTO));
     }
+
+//    @PatchMapping
+//    private ResponseEntity<AnimalDTO> patchAnimalShelter(@RequestBody AnimalShelterDTO animalShelterDTO, AnimalDTO animalDTO){
+//        return ResponseEntity.ok(animalShelterService.addAnimalToSpecificShelter(animalShelterDTO, animalDTO));
+//    }
 }

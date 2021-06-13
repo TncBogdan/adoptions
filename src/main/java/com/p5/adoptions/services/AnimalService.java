@@ -1,11 +1,11 @@
 package com.p5.adoptions.services;
 
+import com.p5.adoptions.model.AnimalDTO;
+import com.p5.adoptions.model.adapters.AnimalAdapter;
 import com.p5.adoptions.repository.AnimalRepository;
 import com.p5.adoptions.repository.AnimalShelterRepository;
 import com.p5.adoptions.repository.entity.Animal;
 import com.p5.adoptions.repository.entity.AnimalShelter;
-import com.p5.adoptions.model.AnimalDTO;
-import com.p5.adoptions.model.adapters.AnimalAdapter;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,20 +30,20 @@ public class AnimalService {
         return AnimalAdapter.toListDTO(animalRepository.findAll());
     }
 
-    public AnimalShelter addAnimal(AnimalDTO animalDTO, String shelterName) {
+    public AnimalDTO addAnimal(AnimalDTO animalDTO) {
 
         AnimalShelter animalShelter = new AnimalShelter();
 
-        if (!shelterName.equals(animalShelterRepository.findByName(animalShelter.getName()))) {
-            throw new RuntimeException("Incorect shelter name.");
-        }
+//        if (!shelterName.equals(animalShelterRepository.findByName(animalShelter.getName()))) {
+//            throw new RuntimeException("Incorect shelter name.");
+//        }
 
-        List<Animal> animalDTOS = new ArrayList<>();
+        List<AnimalDTO> animalDTOS = new ArrayList<>();
 
-        animalDTOS.add(AnimalAdapter.fromDTO(animalDTO.setName(animalDTO.getName()).setPhoto(animalDTO.getPhoto())));
+//        animalDTOS.add(AnimalAdapter.fromDTO(animalDTO.setName(animalDTO.getName()).setPhoto(animalDTO.getPhoto())));
 
-        animalShelter.setAnimals(animalDTOS);
+        animalShelter.setAnimals(AnimalAdapter.fromListDTO(animalDTOS));
 
-        return animalShelter;
+        return animalDTO;
     }
 }
