@@ -32,12 +32,12 @@ public class AnimalShelterService {
         this.animalRepository = animalRepository;
     }
 
-    public List<AnimalShelterDTO> getAll() {
-        return AnimalShelterAdapter.toListDTO(animalShelterRepository.findAll());
-    }
-
     public AnimalShelterDTO getShelter(Integer id) {
         return AnimalShelterAdapter.toDTO(animalShelterRepository.getOne(id));
+    }
+
+    public List<AnimalShelterDTO> getAll() {
+        return AnimalShelterAdapter.toListDTO(animalShelterRepository.findAll());
     }
 
     @Validated(OnCreate.class)

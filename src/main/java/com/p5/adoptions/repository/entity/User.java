@@ -1,5 +1,7 @@
 package com.p5.adoptions.repository.entity;
 
+import com.p5.adoptions.model.UserDTO;
+
 import javax.persistence.*;
 
 @Entity(name = "users")
@@ -10,6 +12,9 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
     private String password;
+
+    public User() {
+    }
 
     public Integer getId() {
         return id;

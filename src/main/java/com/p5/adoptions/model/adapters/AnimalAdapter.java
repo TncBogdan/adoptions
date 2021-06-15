@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AnimalAdapter {
     public static Animal fromDTO(AnimalDTO animalDTO){
-        return (Animal) new Animal().setName(animalDTO.getName())
+        return new Animal().setName(animalDTO.getName())
                 .setPhoto(animalDTO.getPhoto());
     }
 

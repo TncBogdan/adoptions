@@ -31,19 +31,7 @@ public class AnimalService {
     }
 
     public AnimalDTO addAnimal(AnimalDTO animalDTO) {
-
-        AnimalShelter animalShelter = new AnimalShelter();
-
-//        if (!shelterName.equals(animalShelterRepository.findByName(animalShelter.getName()))) {
-//            throw new RuntimeException("Incorect shelter name.");
-//        }
-
-        List<AnimalDTO> animalDTOS = new ArrayList<>();
-
-//        animalDTOS.add(AnimalAdapter.fromDTO(animalDTO.setName(animalDTO.getName()).setPhoto(animalDTO.getPhoto())));
-
-        animalShelter.setAnimals(AnimalAdapter.fromListDTO(animalDTOS));
-
-        return animalDTO;
+        Animal animal = AnimalAdapter.fromDTO(animalDTO);
+        return AnimalAdapter.toDTO(animal);
     }
 }
