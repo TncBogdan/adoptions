@@ -16,12 +16,12 @@ import com.p5.adoptions.services.exceptions.Violation;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
 @Service
-//@Validated
+@Validated
 public class AnimalShelterService {
 
     private final AnimalShelterRepository animalShelterRepository;
@@ -41,9 +41,13 @@ public class AnimalShelterService {
     }
 
     @Validated(OnCreate.class)
-    public AnimalShelterDTO createShelter(AnimalShelterDTO animalShelterDTO) {
+    public AnimalShelterDTO createShelter(@Valid AnimalShelterDTO animalShelterDTO) {
 
         validateShelter(animalShelterDTO);
+
+//        animalShelterRepository
+//                .findById(animalShelterDTO.getId())
+//                .orElseThrow(() -> new AnimalShelterNotFoundException("Shelter not found."));
 
         AnimalShelter animalShelter = AnimalShelterAdapter.fromDTO(animalShelterDTO);
 
@@ -51,7 +55,7 @@ public class AnimalShelterService {
     }
 
     @Validated(OnUpdate.class)
-    public AnimalShelterDTO updateShelter(AnimalShelterDTO animalShelterDTO) {
+    public AnimalShelterDTO updateShelter(@Valid AnimalShelterDTO animalShelterDTO) {
 
         validateShelter(animalShelterDTO);
 
@@ -65,11 +69,6 @@ public class AnimalShelterService {
         return AnimalShelterAdapter.toDTO(animalShelterRepository.save(AnimalShelterAdapter.fromDTO(animalShelterDTO)));
     }
 
-//    public AnimalDTO addAnimalToSpecificShelter(AnimalShelterDTO animalShelterDTO, AnimalDTO animalDTO) {
-//
-//
-//
-//    }
 
     private void validateShelter(AnimalShelterDTO animalShelterDTO) {
 
@@ -82,9 +81,5 @@ public class AnimalShelterService {
                 throw new RuntimeException("Animal does not have valid url");
             }
         }
-
-        animalShelterRepository
-                .findById(animalShelterDTO.getId())
-                .orElseThrow(() -> new AnimalShelterNotFoundException("Shelter not found."));
     }
 }
