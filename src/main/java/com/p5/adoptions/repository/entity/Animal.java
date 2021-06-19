@@ -30,9 +30,11 @@ public class Animal {
     protected Integer id;
     protected String name;
     protected String photo;
+
+    @Enumerated(EnumType.ORDINAL)
     protected BreedEnum breed;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private AnimalShelter shelter;
 
 //    @ManyToMany(mappedBy = "animals")
