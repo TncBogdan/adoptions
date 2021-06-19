@@ -26,8 +26,7 @@ public class AnimalShelter {
 //    )
 //    private List<Animal> animals = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shelter_id")
+    @OneToMany()
     private List<Animal> animals = new ArrayList<>();
 
     public AnimalShelter() {

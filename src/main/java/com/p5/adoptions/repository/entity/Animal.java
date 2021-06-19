@@ -1,8 +1,6 @@
 package com.p5.adoptions.repository.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 ///Option 1
 //Animal will not be save in DB
@@ -34,26 +32,17 @@ public class Animal {
     @Enumerated(EnumType.ORDINAL)
     protected BreedEnum breed;
 
-    @ManyToOne
-    private AnimalShelter shelter;
+//    @ManyToOne
+//    private AnimalShelter shelter;
 
 //    @ManyToMany(mappedBy = "animals")
 //    private List<AnimalShelter>animalShelters = new ArrayList<>();
 
-//      @ManyToOne
-//      @JoinColumn
-//      private AnimalShelter shelter;
+    @ManyToOne()
+    @JoinColumn(name = "shelter_id")
+    protected AnimalShelter shelter;
 
     public Animal() {
-    }
-
-    public BreedEnum getBreed() {
-        return breed;
-    }
-
-    public Animal setBreed(BreedEnum breed) {
-        this.breed = breed;
-        return this;
     }
 
     public AnimalShelter getShelter() {
@@ -62,6 +51,15 @@ public class Animal {
 
     public Animal setShelter(AnimalShelter shelter) {
         this.shelter = shelter;
+        return this;
+    }
+
+    public BreedEnum getBreed() {
+        return breed;
+    }
+
+    public Animal setBreed(BreedEnum breed) {
+        this.breed = breed;
         return this;
     }
 
