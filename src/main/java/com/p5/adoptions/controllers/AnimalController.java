@@ -43,9 +43,8 @@ public class AnimalController {
         {
             return ResponseEntity.badRequest().body(animalDTO);
         }
-        AnimalStore.available.add(animalDTO);
-
-//        animalService.addAnimal(animalDTO);
+//        AnimalStore.available.add(animalDTO);
+        animalService.addAnimal(animalDTO);
 
         return ResponseEntity.ok(animalDTO);
     }

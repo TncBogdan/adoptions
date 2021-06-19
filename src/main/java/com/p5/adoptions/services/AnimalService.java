@@ -4,11 +4,8 @@ import com.p5.adoptions.model.AnimalDTO;
 import com.p5.adoptions.model.adapters.AnimalAdapter;
 import com.p5.adoptions.repository.AnimalRepository;
 import com.p5.adoptions.repository.AnimalShelterRepository;
-import com.p5.adoptions.repository.entity.Animal;
-import com.p5.adoptions.repository.entity.AnimalShelter;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,7 +28,7 @@ public class AnimalService {
     }
 
     public AnimalDTO addAnimal(AnimalDTO animalDTO) {
-        Animal animal = AnimalAdapter.fromDTO(animalDTO);
-        return AnimalAdapter.toDTO(animal);
+        animalRepository.save(AnimalAdapter.fromDTO(animalDTO));
+        return AnimalAdapter.toDTO(AnimalAdapter.fromDTO(animalDTO));
     }
 }
