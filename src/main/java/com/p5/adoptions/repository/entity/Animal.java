@@ -23,7 +23,6 @@ import java.util.List;
 //create table for each entity
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
 public class Animal {
 
     @Id
@@ -31,9 +30,10 @@ public class Animal {
     protected Integer id;
     protected String name;
     protected String photo;
+    protected BreedEnum breed;
 
-//    @OneToOne(mappedBy = "animal")
-//    private AnimalShelter shelter;
+    @OneToOne(cascade = CascadeType.ALL)
+    private AnimalShelter shelter;
 
 //    @ManyToMany(mappedBy = "animals")
 //    private List<AnimalShelter>animalShelters = new ArrayList<>();
@@ -43,6 +43,24 @@ public class Animal {
 //      private AnimalShelter shelter;
 
     public Animal() {
+    }
+
+    public BreedEnum getBreed() {
+        return breed;
+    }
+
+    public Animal setBreed(BreedEnum breed) {
+        this.breed = breed;
+        return this;
+    }
+
+    public AnimalShelter getShelter() {
+        return shelter;
+    }
+
+    public Animal setShelter(AnimalShelter shelter) {
+        this.shelter = shelter;
+        return this;
     }
 
     public Integer getId() {
