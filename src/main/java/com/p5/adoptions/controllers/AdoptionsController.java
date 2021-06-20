@@ -1,6 +1,6 @@
 package com.p5.adoptions.controllers;
 
-import com.p5.adoptions.model.AnimalDTO;
+import com.p5.adoptions.services.domain.AnimalDomain;
 import com.p5.adoptions.repository.AnimalStore;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,27 +19,27 @@ public class AdoptionsController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AnimalDTO>> getAvailableAnimal() {
+    public ResponseEntity<List<AnimalDomain>> getAvailableAnimal() {
         return ResponseEntity.ok(AnimalStore.available);
     }
 
     @PostMapping
-    public ResponseEntity<AnimalDTO> addAnimalForAdoptions(@RequestBody AnimalDTO animalDTO) {
-        if (animalDTO == null && animalDTO.getName() == null && animalDTO.getPhoto() == null) {
-            return ResponseEntity.badRequest().body(animalDTO);
+    public ResponseEntity<AnimalDomain> addAnimalForAdoptions(@RequestBody AnimalDomain animalDomain) {
+        if (animalDomain == null && animalDomain.getName() == null && animalDomain.getPhoto() == null) {
+            return ResponseEntity.badRequest().body(animalDomain);
         }
-        AnimalStore.available.add(animalDTO);
-        return ResponseEntity.ok(animalDTO);
+        AnimalStore.available.add(animalDomain);
+        return ResponseEntity.ok(animalDomain);
     }
 
     @PutMapping("/{name}")
-    public void updateAnimal(@PathVariable(name = "name") String name, @RequestBody AnimalDTO updateAnimalDTO) {
-        List<AnimalDTO> availeble = AnimalStore.available;
+    public void updateAnimal(@PathVariable(name = "name") String name, @RequestBody AnimalDomain updateAnimalDomain) {
+        List<AnimalDomain> availeble = AnimalStore.available;
         for (int i = 0; i < availeble.size(); i++) {
-            AnimalDTO animalDTO = availeble.get(i);
-            if (animalDTO.getName().equals(name)) {
+            AnimalDomain animalDomain = availeble.get(i);
+            if (animalDomain.getName().equals(name)) {
                 availeble.remove(i);
-                availeble.add(updateAnimalDTO);
+                availeble.add(updateAnimalDomain);
                 break;
             }
         }
@@ -47,10 +47,10 @@ public class AdoptionsController {
 
     @DeleteMapping("{/name}")
     public void deleteAnimal(@PathVariable(name = "name") String name) {
-        List<AnimalDTO> availeble = AnimalStore.available;
+        List<AnimalDomain> availeble = AnimalStore.available;
         for (int i = 0; i < availeble.size(); i++) {
-            AnimalDTO animalDTO = availeble.get(i);
-            if (animalDTO.getName().equals(name)) {
+            AnimalDomain animalDomain = availeble.get(i);
+            if (animalDomain.getName().equals(name)) {
                 availeble.remove(i);
                 break;
             }

@@ -1,5 +1,9 @@
 package com.p5.adoptions.repository.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 ///Option 1
@@ -21,6 +25,9 @@ import javax.persistence.*;
 //create table for each entity
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Animal {
 
     @Id
@@ -32,61 +39,8 @@ public class Animal {
     @Enumerated(EnumType.ORDINAL)
     protected BreedEnum breed;
 
-//    @ManyToOne
-//    private AnimalShelter shelter;
-
-//    @ManyToMany(mappedBy = "animals")
-//    private List<AnimalShelter>animalShelters = new ArrayList<>();
-
     @ManyToOne()
     @JoinColumn(name = "shelter_id")
     protected AnimalShelter shelter;
 
-    public Animal() {
-    }
-
-    public AnimalShelter getShelter() {
-        return shelter;
-    }
-
-    public Animal setShelter(AnimalShelter shelter) {
-        this.shelter = shelter;
-        return this;
-    }
-
-    public BreedEnum getBreed() {
-        return breed;
-    }
-
-    public Animal setBreed(BreedEnum breed) {
-        this.breed = breed;
-        return this;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public Animal setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Animal setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public Animal setPhoto(String photo) {
-        this.photo = photo;
-        return this;
-    }
 }

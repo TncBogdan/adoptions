@@ -1,13 +1,13 @@
-package com.p5.adoptions.model;
+package com.p5.adoptions.services.domain;
 
 import java.util.List;
 
-public class ListDTO<T> {
+public class ListDomain<T> {
 
     private Integer totalCount;
     private List<T> list;
 
-    public ListDTO(Integer totalCount, List<T> list) {
+    public ListDomain(Integer totalCount, List<T> list) {
         this.totalCount = totalCount;
         this.list = list;
     }
@@ -16,7 +16,7 @@ public class ListDTO<T> {
         return totalCount;
     }
 
-    public ListDTO<T> setTotalCount(Integer totalCount) {
+    public ListDomain<T> setTotalCount(Integer totalCount) {
         this.totalCount = totalCount;
         return this;
     }
@@ -25,7 +25,7 @@ public class ListDTO<T> {
         return list;
     }
 
-    public ListDTO<T> setList(List<T> list) {
+    public ListDomain<T> setList(List<T> list) {
         this.list = list;
         return this;
     }

@@ -1,7 +1,7 @@
-package com.p5.adoptions.services;
+package com.p5.adoptions.services.serviceImpl;
 
-import com.p5.adoptions.model.UserDTO;
-import com.p5.adoptions.model.adapters.UserAdapter;
+import com.p5.adoptions.services.domain.UserDomain;
+import com.p5.adoptions.services.adapters.UserAdapter;
 import com.p5.adoptions.repository.UserRepository;
 import com.p5.adoptions.repository.entity.User;
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Integer addUser (UserDTO userDTO){
+    public Integer addUser (UserDomain userDomain){
 
-        User user = UserAdapter.fromDTO(userDTO);
+        User user = UserAdapter.fromDomain(userDomain);
 
         userRepository.save(user);
 
-        return userDTO.getId();
+        return userDomain.getId();
     }
 
 }
