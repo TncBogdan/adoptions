@@ -12,7 +12,6 @@ import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
-//@NoArgsConstructor
 public class AnimalDomain {
 
     @Null(message = "Id must be null for creation.", groups = OnCreate.class)

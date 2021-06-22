@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface AnimalDomainMapper {
+
     Animal fromDomain(AnimalDomain animalDomain);
 
     List<Animal> fromListDomain(List<AnimalDomain> animalDomains);
