@@ -1,7 +1,5 @@
 package com.p5.adoptions.controllers.dto;
 
-import com.p5.adoptions.repository.entity.AnimalShelter;
-import com.p5.adoptions.repository.entity.BreedEnum;
 import com.p5.adoptions.services.validations.OnCreate;
 import com.p5.adoptions.services.validations.OnUpdate;
 

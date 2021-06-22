@@ -1,5 +1,6 @@
 package com.p5.adoptions.repository.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
