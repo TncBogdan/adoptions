@@ -9,8 +9,8 @@ import java.util.List;
 
 public class AnimalAdapter {
     public static Animal fromDTO(AnimalDTO animalDTO){
-        return new Animal().setName(animalDTO.getName())
-                .setPhoto(animalDTO.getPhoto());
+        return new Animal().setName(animalDTO.name())
+                .setPhoto(animalDTO.photo());
     }
 
     public static List<Animal> fromListDTO(List<AnimalDTO> animalDTOList){

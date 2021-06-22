@@ -2,53 +2,27 @@ package com.p5.adoptions.controllers.dto;
 
 import javax.validation.constraints.Email;
 
-public class UserDTO {
+public record UserDTO (
 
-    private Integer id;
+    Integer id,
 
     @Email
-    private String email;
+    String email,
 
-    private String password;
+    String password) {
 
-    public UserDTO() {
-    }
-
-    public UserDTO(Integer id, String email, String password) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-    }
-
-    public UserDTO(Integer id, String email) {
-        this.id = id;
-        this.email = email;
-    }
-
-    public Integer getId() {
+    @Override
+    public Integer id() {
         return id;
     }
 
-    public UserDTO setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getEmail() {
+    @Override
+    public String email() {
         return email;
     }
 
-    public UserDTO setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public String getPassword() {
+    @Override
+    public String password() {
         return password;
-    }
-
-    public UserDTO setPassword(String password) {
-        this.password = password;
-        return this;
     }
 }
