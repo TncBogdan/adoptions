@@ -1,7 +1,5 @@
 package com.p5.adoptions.repository.entity;
 
-import com.p5.adoptions.model.UserDTO;
-
 import javax.persistence.*;
 
 @Entity(name = "users")

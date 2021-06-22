@@ -1,6 +1,6 @@
 package com.p5.adoptions.security;
 
-import com.p5.adoptions.repository.UserRepository;
+import com.p5.adoptions.repository.repositoryInterfaces.UserRepository;
 import com.p5.adoptions.repository.entity.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
