@@ -38,7 +38,7 @@ public class MyUserDetailService implements UserDetailsService {
     private CommandLineRunner setUpDefaultUser() {
         return args -> {
             final String defaultEmail = "animalshelter@pentastagiu.io";
-            final String defaultPassword = "password";
+            final String defaultPassword = "getPassword";
 
             Optional<User> defaultUser = userRepository.findByEmail(defaultEmail);
 

@@ -26,7 +26,7 @@ public class AnimalController {
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping("{getId}")
     public ResponseEntity<AnimalDomain> getAnimal(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(animalService.getOne(id));
     }

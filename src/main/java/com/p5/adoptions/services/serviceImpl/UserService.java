@@ -1,10 +1,12 @@
 package com.p5.adoptions.services.serviceImpl;
 
-import com.p5.adoptions.services.model.UserDomain;
-import com.p5.adoptions.services.adapters.UserAdapter;
-import com.p5.adoptions.repository.repositoryInterfaces.UserRepository;
 import com.p5.adoptions.repository.entity.User;
+import com.p5.adoptions.repository.repositoryInterfaces.UserRepository;
+import com.p5.adoptions.services.adapters.UserAdapterDomain;
+import com.p5.adoptions.services.model.UserDomain;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -15,13 +17,18 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Integer addUser (UserDomain userDomain){
+    public UserDomain addUser(UserDomain userDomain) {
 
-        User user = UserAdapter.fromDTO(userDomain);
-
+        User user = UserAdapterDomain.fromDomain(userDomain);
         userRepository.save(user);
-
-        return userDomain.getId();
+        return userDomain;
     }
 
+    public List<UserDomain> getUsers() {
+        return UserAdapterDomain.toListDomain(userRepository.findAll());
+    }
+
+    public UserDomain getUser(Integer id) {
+        return UserAdapterDomain.toDomain(userRepository.getOne(id));
+    }
 }

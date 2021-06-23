@@ -4,25 +4,25 @@ import javax.validation.constraints.Email;
 
 public record UserDTO (
 
-    Integer id,
+    Integer getId,
 
     @Email
-    String email,
+    String getEmail,
 
-    String password) {
+    String getPassword) {
 
-    @Override
-    public Integer id() {
-        return id;
+/////!!!! must change the get properties name
+//    ex: for email -> getEmail
+
+    public Integer getId() {
+        return getId;
     }
 
-    @Override
-    public String email() {
-        return email;
+    public String getEmail() {
+        return getEmail;
     }
 
-    @Override
-    public String password() {
-        return password;
+    public String getPassword() {
+        return getPassword;
     }
 }

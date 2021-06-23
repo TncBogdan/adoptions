@@ -14,15 +14,15 @@ public class AnimalShelter {
     private String address;
 
 //    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "animal_id") //foreign key...default is the id from the child
+//    @JoinColumn(name = "animal_id") //foreign key...default is the getId from the child
 //    private Animal animal;
 
 //    @ManyToMany  // unidirectional relationship
 //    @JoinTable(name = "animal_shelter",
 //            joinColumns =
-//            @JoinColumn(name = "shelter_id", referencedColumnName = "id"),
+//            @JoinColumn(name = "shelter_id", referencedColumnName = "getId"),
 //            inverseJoinColumns =
-//            @JoinColumn(name = "animal_id", referencedColumnName = "id")
+//            @JoinColumn(name = "animal_id", referencedColumnName = "getId")
 //    )
 //    private List<Animal> animals = new ArrayList<>();
 

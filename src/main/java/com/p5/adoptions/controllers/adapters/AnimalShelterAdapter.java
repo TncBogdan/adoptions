@@ -6,6 +6,7 @@ import com.p5.adoptions.services.model.AnimalShelterDomain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class AnimalShelterAdapter {
 

@@ -23,7 +23,7 @@ public class AnimalShelterController {
         return ResponseEntity.ok(animalShelterService.getAll());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("{getId}")
     private ResponseEntity<AnimalShelterDomain>getShelter(@PathVariable("id") Integer id){
         return ResponseEntity.ok(animalShelterService.getShelter(id));
     }

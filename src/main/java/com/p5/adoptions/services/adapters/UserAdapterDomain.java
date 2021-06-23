@@ -1,26 +1,26 @@
-package com.p5.adoptions.controllers.adapters;
+package com.p5.adoptions.services.adapters;
 
-import com.p5.adoptions.repository.entity.User;
 import com.p5.adoptions.services.model.UserDomain;
+import com.p5.adoptions.repository.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserAdapter {
+public class UserAdapterDomain {
 
-    public static UserDomain toDTO(User user){
+    public static UserDomain toDomain(User user){
         return new UserDomain(user.getId(),user.getEmail(), user.getPassword());
     }
 
-    public static User fromDTO(UserDomain userDomain){
+    public static User fromDomain(UserDomain userDomain){
         return new User()
                 .setEmail(userDomain.getEmail())
                 .setPassword(userDomain.getPassword());
     }
 
-    public static List<UserDomain>toListDTO(List<User>userList){
+    public static List<UserDomain> toListDomain(List<User>userList){
         List<UserDomain>dtoUsers = new ArrayList<>();
-        userList.forEach(user -> dtoUsers.add(toDTO(user)));
+        userList.forEach(user -> dtoUsers.add(toDomain(user)));
         return dtoUsers;
     }
 }
