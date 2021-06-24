@@ -7,25 +7,25 @@ import com.p5.adoptions.services.model.AnimalDomain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimalAdapter {
-    public static Animal fromDTO(AnimalDTO animalDTO){
-        return new Animal().setName(animalDTO.name())
+public class AnimalAdapterDTO {
+    public static AnimalDomain fromDTO(AnimalDTO animalDTO){
+        return new AnimalDomain().setName(animalDTO.name())
                 .setPhoto(animalDTO.photo());
     }
 
-    public static List<Animal> fromListDTO(List<AnimalDTO> animalDTOList){
-        List<Animal>animals = new ArrayList<>();
+    public static List<AnimalDomain> fromListDTO(List<AnimalDTO> animalDTOList){
+        List<AnimalDomain>animals = new ArrayList<>();
         for (AnimalDTO animal : animalDTOList){
             animals.add(fromDTO(animal));
         }
         return animals;
     }
 
-    public static AnimalDTO toDTO(Animal animal) {
-        return new AnimalDTO(animal.getId(), animal.getName(), animal.getPhoto());
+    public static AnimalDTO toDTO(AnimalDomain animalDomain) {
+        return new AnimalDTO(animalDomain.getId(), animalDomain.getName(), animalDomain.getPhoto());
     }
 
-    public static List<AnimalDTO> toListDTO(List<Animal> animalList) {
+    public static List<AnimalDTO> toListDTO(List<AnimalDomain> animalList) {
         List<AnimalDTO> dtoList = new ArrayList<>();
         animalList.forEach(animal -> dtoList.add(toDTO(animal)));
         return dtoList;
