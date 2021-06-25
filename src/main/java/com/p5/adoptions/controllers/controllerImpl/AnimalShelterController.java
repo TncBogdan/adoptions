@@ -3,6 +3,7 @@ package com.p5.adoptions.controllers.controllerImpl;
 import com.p5.adoptions.services.serviceImpl.AnimalShelterService;
 import com.p5.adoptions.services.model.AnimalShelterDomain;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,11 +20,12 @@ public class AnimalShelterController {
     }
 
     @GetMapping
+//    @PreAuthorize(value = "hasRole('USER')")
     private ResponseEntity<List<AnimalShelterDomain>>getAll(){
         return ResponseEntity.ok(animalShelterService.getAll());
     }
 
-    @GetMapping("{getId}")
+    @GetMapping("/{id}")
     private ResponseEntity<AnimalShelterDomain>getShelter(@PathVariable("id") Integer id){
         return ResponseEntity.ok(animalShelterService.getShelter(id));
     }

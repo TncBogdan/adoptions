@@ -1,6 +1,10 @@
 package com.p5.adoptions.repository.entity;
 
+import com.p5.adoptions.repository.roles.Role;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "users")
 public class User {
@@ -11,7 +15,22 @@ public class User {
     private String email;
     private String password;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    Set<Role> userRoles = new HashSet<>();
+
     public User() {
+    }
+
+    public Set<Role> getUserRoles() {
+        return userRoles;
+    }
+
+    public User setUserRoles(Set<Role> userRoles) {
+        this.userRoles = userRoles;
+        return this;
     }
 
     public Integer getId() {

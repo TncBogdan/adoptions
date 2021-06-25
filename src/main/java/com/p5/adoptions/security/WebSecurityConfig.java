@@ -27,19 +27,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/v1/animals/hello")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+                .antMatchers("/v1/animals/hello").permitAll()
+                .antMatchers("/v1/shelters/*").hasRole("USER")
+                .anyRequest().authenticated()
                 .and()
-                .csrf().disable()
-                .httpBasic();
+                .httpBasic()
+                .and().csrf().disable();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .userDetailsService(userDetailsService)
+        auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder)
                 .and()
                 .authenticationProvider(authenticationProvider())

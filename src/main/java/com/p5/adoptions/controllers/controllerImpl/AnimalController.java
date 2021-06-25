@@ -1,5 +1,6 @@
 package com.p5.adoptions.controllers.controllerImpl;
 
+import com.p5.adoptions.services.IAnimalService;
 import com.p5.adoptions.services.model.AnimalDomain;
 import com.p5.adoptions.repository.AnimalStore;
 import com.p5.adoptions.services.serviceImpl.AnimalService;
@@ -12,7 +13,8 @@ import java.util.List;
 @RequestMapping("/v1/animals")
 public class AnimalController {
 
-    private final AnimalService animalService;
+//    private final AnimalService animalService;
+    private final IAnimalService animalService;
 
     public AnimalController(AnimalService animalService) {
         this.animalService = animalService;
@@ -26,9 +28,9 @@ public class AnimalController {
     }
 
 
-    @GetMapping("{getId}")
+    @GetMapping("/{id}")
     public ResponseEntity<AnimalDomain> getAnimal(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(animalService.getOne(id));
+        return ResponseEntity.ok(animalService.get(id));
     }
 
     @GetMapping
@@ -43,9 +45,9 @@ public class AnimalController {
         {
             return ResponseEntity.badRequest().body(animalDomain);
         }
-        AnimalStore.available.add(animalDomain);
+//        AnimalStore.available.add(animalDomain);
 
-//        animalService.addAnimal(animalDTO);
+        animalService.add(animalDomain);
 
         return ResponseEntity.ok(animalDomain);
     }

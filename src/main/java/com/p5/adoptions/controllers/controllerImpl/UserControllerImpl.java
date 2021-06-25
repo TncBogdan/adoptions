@@ -21,7 +21,7 @@ public class UserControllerImpl {
         return ResponseEntity.ok(UserAdapterDTO.toListDTO(userService.getUsers()));
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(UserAdapterDTO.toDTO(userService.getUser(id)));
     }
