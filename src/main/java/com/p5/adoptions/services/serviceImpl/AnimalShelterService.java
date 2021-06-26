@@ -22,11 +22,9 @@ import java.util.Locale;
 public class AnimalShelterService {
 
     private final AnimalShelterRepository animalShelterRepository;
-    private final AnimalRepository animalRepository;
 
-    public AnimalShelterService(AnimalShelterRepository animalShelterRepository, AnimalRepository animalRepository) {
+    public AnimalShelterService(AnimalShelterRepository animalShelterRepository) {
         this.animalShelterRepository = animalShelterRepository;
-        this.animalRepository = animalRepository;
     }
 
     public AnimalShelterDomain getShelter(Integer id) {

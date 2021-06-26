@@ -11,13 +11,12 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class RoleHierarchyConfig extends GlobalMethodSecurityConfiguration {
+public class RoleHierarchyConfiguration extends GlobalMethodSecurityConfiguration {
 
     @Bean
     public RoleHierarchy roleHierarchy() {
-
         RoleHierarchyImpl  roleHierarchy = new RoleHierarchyImpl();
-        String hierarchy = "ROLE_ADMIN > ROLE_MOD \n ROLE_MODE > ROLE_USER";
+        String hierarchy = "ROLE_ADMIN > ROLE_MOD \n ROLE_MOD > ROLE_USER";
         roleHierarchy.setHierarchy(hierarchy);
         return roleHierarchy;
     }

@@ -20,7 +20,7 @@ public class AnimalShelterController {
     }
 
     @GetMapping
-//    @PreAuthorize(value = "hasRole('USER')")
+//    @PreAuthorize("hasRole('ADMIN')")
     private ResponseEntity<List<AnimalShelterDomain>>getAll(){
         return ResponseEntity.ok(animalShelterService.getAll());
     }
