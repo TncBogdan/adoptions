@@ -1,9 +1,9 @@
 package com.p5.adoptions.controllers.controllerImpl;
 
+import com.p5.adoptions.services.IAnimalShelterService;
 import com.p5.adoptions.services.serviceImpl.AnimalShelterService;
 import com.p5.adoptions.services.model.AnimalShelterDomain;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/v1/shelters")
 public class AnimalShelterController {
 
-    private final AnimalShelterService animalShelterService;
+    private final IAnimalShelterService animalShelterService;
 
     public AnimalShelterController(AnimalShelterService animalShelterService) {
         this.animalShelterService = animalShelterService;
@@ -27,12 +27,12 @@ public class AnimalShelterController {
 
     @GetMapping("/{id}")
     private ResponseEntity<AnimalShelterDomain>getShelter(@PathVariable("id") Integer id){
-        return ResponseEntity.ok(animalShelterService.getShelter(id));
+        return ResponseEntity.ok(animalShelterService.get(id));
     }
 
     @PostMapping
     private ResponseEntity<AnimalShelterDomain>createShelter(@Valid @RequestBody AnimalShelterDomain animalShelterDomain){
-        return ResponseEntity.ok(animalShelterService.createShelter(animalShelterDomain));
+        return ResponseEntity.ok(animalShelterService.add(animalShelterDomain));
     }
 
     @PutMapping

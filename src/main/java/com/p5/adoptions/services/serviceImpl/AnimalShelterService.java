@@ -1,5 +1,6 @@
 package com.p5.adoptions.services.serviceImpl;
 
+import com.p5.adoptions.services.IAnimalShelterService;
 import com.p5.adoptions.services.model.AnimalDomain;
 import com.p5.adoptions.services.model.AnimalShelterDomain;
 import com.p5.adoptions.services.adapters.AnimalShelterAdapter;
@@ -19,7 +20,7 @@ import java.util.Locale;
 
 @Service
 @Validated
-public class AnimalShelterService {
+public class AnimalShelterService implements IAnimalShelterService {
 
     private final AnimalShelterRepository animalShelterRepository;
 
@@ -27,7 +28,7 @@ public class AnimalShelterService {
         this.animalShelterRepository = animalShelterRepository;
     }
 
-    public AnimalShelterDomain getShelter(Integer id) {
+    public AnimalShelterDomain get(Integer id) {
         return AnimalShelterAdapter.toDTO(animalShelterRepository.getOne(id));
     }
 
@@ -36,7 +37,7 @@ public class AnimalShelterService {
     }
 
     @Validated(OnCreate.class)
-    public AnimalShelterDomain createShelter(@Valid AnimalShelterDomain animalShelterDomain) {
+    public AnimalShelterDomain add(@Valid AnimalShelterDomain animalShelterDomain) {
 
         validateShelter(animalShelterDomain);
 

@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public interface IAnimalService {
 
     AnimalDomain get(Integer id);
+
     List<AnimalDomain> getAll();
+
     AnimalDomain add(AnimalDomain animalDomain);
 }

@@ -53,7 +53,7 @@ public class MyUserDetailService implements UserDetailsService {
 
             Optional<User> defaultUser = userRepository.findByEmail(defaultEmail);
 
-            if (!defaultUser.isPresent()) {
+            if (defaultUser.isEmpty()) {
                 userRepository.save(new User()
                         .setEmail(defaultEmail)
                         .setPassword(passwordEncoder.encode(defaultPassword))
