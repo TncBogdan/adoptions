@@ -1,10 +1,11 @@
 package com.p5.adoptions.security;
 
 import com.p5.adoptions.repository.entity.RolesEnum;
+import com.p5.adoptions.services.model.RolesEnumDomain;
 import com.p5.adoptions.repository.entity.User;
 import com.p5.adoptions.repository.repositoryInterfaces.RoleRepository;
 import com.p5.adoptions.repository.repositoryInterfaces.UserRepository;
-import com.p5.adoptions.repository.roles.Role;
+import com.p5.adoptions.repository.entity.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,7 +47,7 @@ public class MyUserDetailService implements UserDetailsService {
             final String defaultEmail = "animalshelter@pentastagiu.io";
             final String defaultPassword = "getPassword";
 
-            var moderatorRole = roleRepository.findByRole(RolesEnum.ROLE_MOD).orElseGet(() -> {
+            var moderatorRole = roleRepository.findByRole(RolesEnumDomain.ROLE_MOD).orElseGet(() -> {
                 Role newRole = new Role().setRole(RolesEnum.ROLE_MOD);
                 return roleRepository.save(newRole);
             });

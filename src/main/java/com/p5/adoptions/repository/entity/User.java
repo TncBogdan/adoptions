@@ -1,7 +1,5 @@
 package com.p5.adoptions.repository.entity;
 
-import com.p5.adoptions.repository.roles.Role;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,9 +18,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     Set<Role> userRoles = new HashSet<>();
-
-    public User() {
-    }
 
     public Set<Role> getUserRoles() {
         return userRoles;
