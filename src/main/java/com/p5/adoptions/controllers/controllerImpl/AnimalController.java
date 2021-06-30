@@ -5,15 +5,16 @@ import com.p5.adoptions.services.model.AnimalDomain;
 import com.p5.adoptions.repository.AnimalStore;
 import com.p5.adoptions.services.serviceImpl.AnimalService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/v1/animals")
+@PreAuthorize("isAuthenticated()")
 public class AnimalController {
 
-//    private final AnimalService animalService;
     private final IAnimalService animalService;
 
     public AnimalController(AnimalService animalService) {
@@ -21,6 +22,7 @@ public class AnimalController {
     }
 
     @GetMapping("/hello")
+    @PreAuthorize("permitAll()")
     public ResponseEntity<String> greetOwner(@RequestParam(name = "name", required = false) String ownerName)
     {
         String name = ownerName == null ? "world" : ownerName;

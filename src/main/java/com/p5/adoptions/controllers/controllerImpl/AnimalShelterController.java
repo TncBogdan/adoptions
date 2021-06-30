@@ -4,6 +4,7 @@ import com.p5.adoptions.services.IAnimalShelterService;
 import com.p5.adoptions.services.serviceImpl.AnimalShelterService;
 import com.p5.adoptions.services.model.AnimalShelterDomain;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/v1/shelters")
+@PreAuthorize("isAuthenticated()")
 public class AnimalShelterController {
 
     private final IAnimalShelterService animalShelterService;
@@ -20,7 +22,7 @@ public class AnimalShelterController {
     }
 
     @GetMapping
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('MOD')")
     private ResponseEntity<List<AnimalShelterDomain>>getAll(){
         return ResponseEntity.ok(animalShelterService.getAll());
     }

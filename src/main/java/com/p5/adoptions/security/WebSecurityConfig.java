@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+
 import javax.sql.DataSource;
 
 @Configuration
@@ -28,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/v1/animals/hello").permitAll()
-                .antMatchers("/v1/shelters/").hasRole("USER")
+                .antMatchers("/v1/shelters/*").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
@@ -52,4 +53,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         return daoAuthenticationProvider;
     }
+
+//        After we have implemented UserDertailsService, we don't need this hack anymore.
+//        @Bean
+//        @Override
+//        protected UserDetailsService userDetailsService()
+//        {
+//            UserDetails user = User.withDefaultPasswordEncoder()
+//                                   .username("user")
+//                                   .password("password")
+//                                   .roles("USER")
+//                                   .build();
+//            return new InMemoryUserDetailsManager(user);
+//        }
 }

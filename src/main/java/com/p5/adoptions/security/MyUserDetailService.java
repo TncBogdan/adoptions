@@ -33,7 +33,7 @@ public class MyUserDetailService implements UserDetailsService {
 
         Optional<User> userOptional = userRepository.findByEmail(userName);
 
-        if (userOptional.isEmpty()) {
+        if (!userOptional.isPresent()) {
             throw new UsernameNotFoundException(userName);
         }
 
@@ -44,7 +44,7 @@ public class MyUserDetailService implements UserDetailsService {
     private CommandLineRunner setUpDefaultUser() {
         return args -> {
             final String defaultEmail = "animalshelter@pentastagiu.io";
-            final String defaultPassword = "getPassword";
+            final String defaultPassword = "password";
 
             var moderatorRole = roleRepository.findByRole(RolesEnum.ROLE_MOD).orElseGet(() -> {
                 Role newRole = new Role().setRole(RolesEnum.ROLE_MOD);
@@ -53,7 +53,7 @@ public class MyUserDetailService implements UserDetailsService {
 
             Optional<User> defaultUser = userRepository.findByEmail(defaultEmail);
 
-            if (defaultUser.isEmpty()) {
+            if (!defaultUser.isPresent()) {
                 userRepository.save(new User()
                         .setEmail(defaultEmail)
                         .setPassword(passwordEncoder.encode(defaultPassword))
