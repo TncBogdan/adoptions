@@ -66,7 +66,7 @@ public class AnimalShelterService implements IAnimalShelterService {
     }
 
 
-    private void validateShelter(AnimalShelterDomain animalShelterDomain) {
+    public void validateShelter(AnimalShelterDomain animalShelterDomain) {
 
         if (!animalShelterDomain.getAddress().toLowerCase(Locale.ROOT).contains("iasi") && (!animalShelterDomain.getAddress().toLowerCase(Locale.ROOT).contains("brasov"))) {
             throw new ShelterAddressException(new Violation("address", "Shelter is not from Iasi or Brasov", animalShelterDomain.getAddress()));

@@ -20,18 +20,19 @@ public record AnimalDTO(
         @NotNull
         @NotBlank
         String photo) {
-        @Override
-        public Integer id() {
-                return id;
-        }
 
-        @Override
-        public String name() {
-                return name;
-        }
+    @Override
+    public Integer id() {
+        return id;
+    }
 
-        @Override
-        public String photo() {
-                return photo;
-        }
+    @Override
+    public String name() {
+        return name;
+    }
+
+    @Override
+    public String photo() {
+        return photo;
+    }
 }

@@ -23,7 +23,6 @@ import java.util.List;
 //create table for each entity
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
 public class Animal {
 
     @Id

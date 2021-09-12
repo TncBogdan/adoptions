@@ -27,7 +27,7 @@ public class AnimalService implements IAnimalService {
     }
 
     public AnimalDomain add(AnimalDomain animalDomain) {
-        Animal animal = AnimalAdapter.fromDomain(animalDomain);
+        var animal = AnimalAdapter.fromDomain(animalDomain);
         return AnimalAdapter.toDomain(animal);
     }
 }
